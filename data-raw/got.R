@@ -28,3 +28,9 @@ deaths <- read_csv( "data-raw/character-deaths.csv") %>%
     Nobility = ifelse( Nobility == 1, "nobel", "commoner")
   )
 use_data( deaths, overwrite = TRUE )
+
+
+predictions <- read_csv( "data-raw/character-predictions.csv") %>%
+  mutate_at( vars(starts_with("book")), as.logical ) %>%
+  mutate_at( vars(starts_with("is")), as.logical )
+use_data( predictions, overwrite = TRUE )
